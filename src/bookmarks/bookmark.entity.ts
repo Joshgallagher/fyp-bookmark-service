@@ -1,19 +1,28 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+    Entity,
+    Column,
+    BaseEntity,
+    PrimaryGeneratedColumn,
+    CreateDateColumn,
+    UpdateDateColumn,
+    Unique,
+} from 'typeorm';
 
 @Entity()
+@Unique(['userId', 'articleId'])
 export class Bookmark extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column({ nullable: false })
     userId: string;
 
-    @Column()
+    @Column({ nullable: false })
     articleId: number;
 
     @CreateDateColumn()
-    created_at: string;
+    createdAt: string;
 
     @UpdateDateColumn()
-    updated_at: string;
+    updatedAt: string;
 }
