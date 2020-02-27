@@ -2,11 +2,11 @@ import { Context } from 'mali';
 import { validateOrReject } from 'class-validator';
 import RpcException from 'grpc-error';
 import { status } from 'grpc';
-import { User } from '../user/user.entity';
+import { Bookmark } from 'src/bookmarks/bookmark.entity';
 
 export const validateMiddleware = (): Function => {
     return async function validate(context: Context, next: Function): Promise<void> {
-        const user = User.create(context.request.req);
+        const user = Bookmark.create(context.request.req);
 
         try {
             await validateOrReject(user, { skipMissingProperties: true });
