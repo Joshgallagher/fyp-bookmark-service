@@ -1,5 +1,5 @@
 {
-    "name": "fyp-user-service-v3",
+    "name": "fyp-bookmark-service",
     "version": "1.0.0",
     "description": "",
     "main": "index.ts",
@@ -10,15 +10,15 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/Joshgallagher/fyp-user-service-v3.git"
+        "url": "git+https://github.com/Joshgallagher/fyp-bookmark-service.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/Joshgallagher/fyp-user-service-v3/issues"
+        "url": "https://github.com/Joshgallagher/fyp-bookmark-service/issues"
     },
-    "homepage": "https://github.com/Joshgallagher/fyp-user-service-v3#readme",
+    "homepage": "https://github.com/Joshgallagher/fyp-bookmark-service#readme",
     "devDependencies": {
         "@types/faker": "^4.1.7",
         "@types/jest": "^24.9.0",
