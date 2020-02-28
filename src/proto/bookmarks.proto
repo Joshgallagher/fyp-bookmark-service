@@ -3,7 +3,9 @@ syntax = "proto3";
 package bookmarks;
 
 service BookmarksService {
+    rpc createBookmark (Bookmark) returns (CreateBookmarkResponse);
     rpc FindAllBookmarks (Empty) returns (FindAllBookmarksResponse);
+    rpc deleteBookmark (Bookmark) returns (DeleteBookmarkResponse);
 }
 
 message Empty {}
@@ -12,6 +14,14 @@ message Bookmark {
     int32 articleId = 1;
 }
 
+message CreateBookmarkResponse {
+    bool bookmarked = 1;
+}
+
 message FindAllBookmarksResponse {
     repeated Bookmark bookmarks = 1;
+}
+
+message DeleteBookmarkResponse {
+    bool removed = 1;
 }
