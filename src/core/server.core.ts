@@ -5,7 +5,6 @@ import { createBookmark, findAllBookmarks, removeBookmark } from '../bookmarks/b
 import { createConnection } from './connection.core';
 import { verifyJwtMiddleware } from '../middleware/verify-jwt.middleware';
 import { userIdHeaderMiddleware } from '../middleware/user-id-header.middleware';
-// import { validateMiddleware } from '../middleware/validate.middleware';
 
 const PROTO_PATH = resolve(__dirname, '../proto/bookmarks.proto');
 const PROTO_SERVICE = 'BookmarksService';

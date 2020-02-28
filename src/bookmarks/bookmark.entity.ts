@@ -7,7 +7,6 @@ import {
     UpdateDateColumn,
     Unique,
 } from 'typeorm';
-import { IsDefined } from 'class-validator';
 
 @Entity()
 @Unique(['userId', 'articleId'])
@@ -19,7 +18,6 @@ export class Bookmark extends BaseEntity {
     userId: string;
 
     @Column({ nullable: false })
-    @IsDefined()
     articleId: number;
 
     @CreateDateColumn()
