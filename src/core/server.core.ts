@@ -1,7 +1,7 @@
 import './config.core';
 import Mali from 'mali';
 import { resolve } from 'path';
-import { createBookmark, findAllBookmarks } from '../bookmarks/bookmarks.controller';
+import { createBookmark, findAllBookmarks, removeBookmark } from '../bookmarks/bookmarks.controller';
 import { createConnection } from './connection.core';
 import { verifyJwtMiddleware } from '../middleware/verify-jwt.middleware';
 import { userIdHeaderMiddleware } from '../middleware/user-id-header.middleware';
@@ -23,6 +23,7 @@ export const startServer = async (randomPort = false): Promise<Mali> => {
         [PROTO_SERVICE]: {
             createBookmark: [createBookmark],
             findAllBookmarks: [findAllBookmarks],
+            deleteBookmark: [removeBookmark],
         },
     });
 
