@@ -3,15 +3,18 @@ syntax = "proto3";
 package bookmarks;
 
 service BookmarksService {
-    rpc createBookmark (Bookmark) returns (Empty);
+    rpc createBookmark (Bookmark) returns (createBookmarkResponse);
     rpc FindAllBookmarks (Empty) returns (FindAllBookmarksResponse);
-    rpc deleteBookmark (Bookmark) returns (Empty);
 }
 
 message Empty {}
 
 message Bookmark {
     int32 articleId = 1;
+}
+
+message createBookmarkResponse {
+    bool bookmarked = 1;
 }
 
 message FindAllBookmarksResponse {

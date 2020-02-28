@@ -2,14 +2,14 @@ import { Context } from 'mali';
 import { validateOrReject } from 'class-validator';
 import RpcException from 'grpc-error';
 import { status } from 'grpc';
-import { Bookmark } from 'src/bookmarks/bookmark.entity';
+import { Bookmark } from '../bookmarks/bookmark.entity';
 
 export const validateMiddleware = (): Function => {
     return async function validate(context: Context, next: Function): Promise<void> {
-        const user = Bookmark.create(context.request.req);
+        const bookmark = Bookmark.create(context.request.req);
 
         try {
-            await validateOrReject(user, { skipMissingProperties: true });
+            await validateOrReject(bookmark, { skipMissingProperties: true });
         } catch ([{ property, constraints }]) {
             throw new RpcException('VALIDATION_ERROR', status.FAILED_PRECONDITION, {
                 field: property,

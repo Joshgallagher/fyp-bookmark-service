@@ -1,11 +1,11 @@
 import './config.core';
 import Mali from 'mali';
 import { resolve } from 'path';
-import { findAllBookmarks } from '../bookmarks/bookmarks.controller';
+import { createBookmark, findAllBookmarks } from '../bookmarks/bookmarks.controller';
 import { createConnection } from './connection.core';
 import { verifyJwtMiddleware } from '../middleware/verify-jwt.middleware';
 import { userIdHeaderMiddleware } from '../middleware/user-id-header.middleware';
-// import { validateMiddleware } from 'src/middleware/validate.middleware';
+// import { validateMiddleware } from '../middleware/validate.middleware';
 
 const PROTO_PATH = resolve(__dirname, '../proto/bookmarks.proto');
 const PROTO_SERVICE = 'BookmarksService';
@@ -21,7 +21,8 @@ export const startServer = async (randomPort = false): Promise<Mali> => {
     appInstance.use(userIdHeaderMiddleware());
     appInstance.use({
         [PROTO_SERVICE]: {
-            findAllBookmarks: [findAllBookmarks], // [validateMiddleware(), findAllBookmarks],
+            createBookmark: [createBookmark],
+            findAllBookmarks: [findAllBookmarks],
         },
     });
 
