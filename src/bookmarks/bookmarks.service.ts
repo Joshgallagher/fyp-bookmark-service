@@ -36,7 +36,7 @@ export const remove = async (data: Record<string, any>): Promise<any> => {
         await getRepository(Bookmark).delete(id);
     } catch (e) {
         throw new RpcException('BOOKMARK_NOT_FOUND', status.NOT_FOUND, {
-            error: 'Bookmark does not exist to be removed',
+            error: 'Bookmark can not be removed as it does not exist',
         });
     }
 
