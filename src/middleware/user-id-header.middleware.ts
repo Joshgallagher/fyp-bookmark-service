@@ -7,6 +7,14 @@ import { status } from 'grpc';
 const OPTIONS = { error: { message: 'NOT_AUTHORISED', code: status.PERMISSION_DENIED } };
 
 export const userIdHeaderMiddleware = (): Function => {
+    if (process.env.NODE_ENV == 'test') {
+        return async (context: any, next: Function): Promise<void> => {
+            context.req.subject = context.get('user') as string;
+
+            await next();
+        };
+    }
+
     if (process.env.SKIP_USER_ID_HEADER_INJECTION == 'true') {
         return async (_context: any, next: Function): Promise<void> => await next();
     }
